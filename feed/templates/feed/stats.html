@@ -1,0 +1,74 @@
+{% extends "feed/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="row">
+        <div class="col l2">
+             <div class="row">
+                <div class="col 12">
+                  <div class="row">
+                    <div class="input-field col l12">
+                      <i class="material-icons prefix">search</i>
+                      <input type="text" id="autocomplete-input" class="autocomplete">
+                      <label for="autocomplete-input">Search</label>
+                    </div>
+                  </div>
+                    <div class="sidebar">
+                        {% if not user.is_authenticated %}
+            <a href=""><i class="fa fa-fw fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;Sign Up</a>
+            <a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login</a>
+      {% else %}
+          <a href=""><i class="fa fa-fw fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ user.username }}</a>
+          <a href="{% url 'feed:logout' %}"><i class="fa fa-fw fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
+        {% endif %}
+                    </div>
+                </div>
+             </div>
+
+
+
+
+
+
+        </div>
+        <div class="col l7">
+        <div class="card">
+            <h4>Give star and be the part to save 4th pillar</h4>
+
+                <table>
+                    <tr><th>Name</th><th>Rating</th><th>Positive</th><th>Negative</th></tr>
+                    <tr><td>1.&nbsp;NDTV</td><td>63.49</td><td>{{ lp.0 }}</td><td>{{ ln.0 }}</td></tr>
+                    <tr><td>1.&nbsp;Republic</td><td>50</td><td>{{ lp.1 }}</td><td>{{ ln.1 }}</td></tr>
+                     <tr><td>1.&nbsp;Hindustan Time</td><td>69.12</td><td>{{ lp.2 }}</td><td>{{ ln.2 }}</td></tr>
+                    <tr><td>1.&nbsp;The Hindu</td><td>92.06</td><td>{{ lp.3 }}</td><td>{{ ln.3 }}</td></tr>
+                    <tr><td>1.&nbsp;Aaj Tak</td><td>65.30</td><td>{{ lp.4 }}</td><td>{{ ln.4 }}</td></tr>
+                    <tr><td>1.&nbsp;Zee News</td><td>51.04</td><td>{{ lp.5 }}</td><td>{{ ln.5 }}</td></tr>
+                    <tr><td>1.&nbsp;India Tv</td><td>0</td><td>{{ lp.6 }}</td><td>{{ ln.6 }}</td></tr>
+
+                    <tr><td>1.&nbsp;Times of India</td><td>8.7</td><td>Star</td></tr>
+
+                    <tr><td>1.&nbsp;Indian Express</td><td>8.7</td><td>Star</td></tr>
+                    <tr><td>1.&nbsp;ABP News</td><td>8.7</td><td>Star</td></tr>
+
+
+                </table>
+
+
+        </div>
+
+
+
+        </div>
+        <div class="col l3">
+           <div class="card">
+               <p style="text-align:center;"><b>Sentiment Analysis</b></p>
+               <table>
+                   <tr><td><b>Positive</b></td><td>{{ positive }}</td></tr>
+                   <tr><td><b>Negative</b></td><td>{{ negative }}</td></tr>
+                   <tr><td>Stats</td><td>{{ percentage }}</td></tr>
+                   <p></p>
+               </table>
+
+           </div>
+        </div>
+    </div>
+{% endblock %}

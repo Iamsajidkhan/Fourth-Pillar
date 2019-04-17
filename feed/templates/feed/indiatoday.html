@@ -1,0 +1,30 @@
+{% extends "feed/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="row">
+        <div class="col l2">
+            {% include 'feed/leftsidemenu.html' %}
+        </div>
+        <div class="col l7">
+
+
+            <div class="card">
+                 <div class="card-content">
+                    <p style="text-align:center">India Today</p>
+                </div>
+               <ul class="browser-default">
+                    {% for post in indiatoday_headline %}
+                    <li><a href="{{ post.link }}"> {{ post.headline }}</a><br>
+                        <small><left> {{ post.date }}</left></small>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+
+        </div>
+        <div class="col l3">
+            {% include 'feed/rightsiderank.html' %}
+        </div>
+    </div>
+{% endblock %}

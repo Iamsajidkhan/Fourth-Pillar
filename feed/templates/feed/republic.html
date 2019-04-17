@@ -1,0 +1,26 @@
+{% extends "feed/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="row">
+        <div class="col l3">
+            {% include 'feed/leftsidemenu.html' %}
+        </div>
+        <div class="col l6">
+            <div class="card new-card">
+                <div class="card-content">
+                    <p>Republic</p>
+                   <ul class="browser-default">
+                        {% for post in republic_headline %}
+                        <li><a href="{{ post.link }}"> {{ post.headline }}</a><br>
+                            <!--<small><left> {{ post.date }}</left></small>-->
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col l3">
+            {% include 'feed/rightsiderank.html' %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<div class="row">
+                <div class="col l12">
+                  <div class="row">
+                    <div class="input-field col l12">
+                      <i class="material-icons prefix">search</i>
+                      <input type="text" id="autocomplete-input" class="autocomplete">
+                      <label for="autocomplete-input">Search</label>
+                    </div>
+                  </div>
+                    <div class="sidebar">
+                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;Top News</a>
+                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa-user"></i> &nbsp;&nbsp;&nbsp;Your Profile</a>
+                      {% include "registration/login.html" %}
+                </div>
+
+</div>
+</div>

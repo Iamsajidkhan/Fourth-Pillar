@@ -1,0 +1,136 @@
+{% extends "feed/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="row">
+        <div class="col l2">
+             <div class="row">
+                <div class="col l12">
+                  <div class="row">
+                    <div class="input-field col l12">
+                      <i class="material-icons prefix">search</i>
+                      <input type="text" id="autocomplete-input" class="autocomplete">
+                      <label for="autocomplete-input">Search</label>
+                    </div>
+                  </div>
+                    <div class="sidebar">
+                      <a href="{% url 'feed:news' %}"><i class="fa fa-fw fa fa-list"></i>&nbsp;&nbsp;&nbsp;&nbsp;Top News</a>
+                      {% if not user.is_authenticated %}
+                        <a href="{% url 'feed:signup' %}"><i class="fa fa-user-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;Sign Up</a>
+                        <a href="{% url 'login' %}"><i class="fa fa-sign-in" ></i></i>&nbsp;&nbsp;&nbsp;&nbsp;Login</a>
+                      {% else %}
+                        <a href=""><i class="fa fa-fw fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{ user.username }}</a>
+                        <a href="{% url 'feed:logout' %}"><i class="fa fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;logout</a>
+                      {% endif %}
+                    </div>
+
+                </div>
+
+             </div>
+        </div>
+        <div class="col l7">
+            <div class="card">
+                <canvas id="categorychart">
+                </canvas>
+                <div class="card-content">
+                    Analysis of Indian News Media
+                </div>
+            </div>
+            <div class="card">
+                <canvas id="keywordchart">
+                </canvas>
+                 <div class="card-content">
+                    Top keyword by indian media
+                </div>
+            </div>
+
+            <script>
+    let keywordchart=document.getElementById('keywordchart').getContext('2d');
+
+
+    let drawkeywordchart=new Chart(keywordchart,{
+        type:'bar',
+        data:{
+          labels:{{keyword |safe }} ,
+          datasets:[{
+                        data:{{keyword_frequency}},
+                        backgroundColor:['#64B5F6','#E3F2FD','#F06292','#CDDC39','#EA80FC','#FF8A65','#81C784',
+                        '#64B5F6','#E3F2FD','#F06292','#CDDC39','#EA80FC','#FF8A65','#81C784',
+                        '#64B5F6','#E3F2FD','#F06292'
+                        ],
+
+                        borderWidth:3,
+                        borderColor:'#777',
+                        hoverBorderWidth:6,
+                        hoverBorderColor:'#000'
+                    }
+                  ],
+
+        },
+
+
+
+
+        options:{
+                'onClick' : function (evt, item) {
+            var keyword = item[0]['_model'].label
+            var url = "{% url 'feed:keyword' %}";
+
+            document.location.href = url+keyword;
+
+          },
+        }
+
+    });
+
+
+
+    let categorychart=document.getElementById('categorychart').getContext('2d');
+    let drawcategorychart=new Chart(categorychart,{
+        type:'pie',
+        data:{
+          labels:['Politics','Bollywood','Cricket','Pollution','Population','Unemployment','Child Labour','Price Hike','Corruption','Education'],
+          datasets:[{
+                        data:[44,20,15,5,2,3,1,2,6,2],
+                        backgroundColor:['#64B5F6','#E3F2FD','#F06292','#CDDC39','#EA80FC','#FF8A65','#81C784','#76FF03','#F44336','#00C853'],
+                        borderWidth:0,
+                        borderColor:'#777',
+                        hoverBorderWidth:2,
+                        hoverBorderColor:'#000'
+                    }
+                  ],
+
+        },
+        options:{
+
+
+
+
+        }
+    });
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <div class="col l3">
+            {% include 'feed/rightsiderank.html' %}
+        </div>
+    </div>
+{% endblock %}

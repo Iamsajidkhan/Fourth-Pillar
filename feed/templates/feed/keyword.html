@@ -1,0 +1,39 @@
+{% extends "feed/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    <div class="row">
+        <div class="col l2">
+             <div class="row">
+                <div class="col 12">
+                  <div class="row">
+                    <div class="input-field col l12">
+                      <i class="material-icons prefix">search</i>
+                      <input type="text" id="autocomplete-input" class="autocomplete">
+                      <label for="autocomplete-input">Search</label>
+                    </div>
+                  </div>
+
+
+
+                </div>
+             </div>
+        </div>
+        <div class="col l7">
+
+            <div class="card" id="republic">
+                <br>
+                <h6><b>&nbsp;&nbsp;&nbsp;Republic</b></h6>
+                <ul class="browser-default">
+                    <p>All Post Related to <b style="color:red;">{{ object_list.keyword }}</b></p>
+                    {% for obj in object_list.query_list %}
+                        <li><a href="{{ obj.link }}"> {{ obj.headline }}</a><br></li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+        <div class="col l3">
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fourth Pillar</title>
+
+
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+    <!--icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+    <style>
+
+.new-card{
+    text-align:left!important;
+}
+
+
+    .sidebar {
+
+
+
+}
+
+.sidebar a {
+
+  font-size: 20px;
+  color: #0D47A1;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #1A237E;
+  background-color:#8C9EFF;
+}
+left{
+color:#616161;
+padding-top:-10px!important;
+
+}
+.news-card-bottom{
+color:#ff6060;
+padding-left:10%;
+padding-bottom:5px;
+}
+
+
+        .footer-copyright{
+            text-align:center;
+        }
+        .brand-logo{
+            padding-left:100px!important;
+            font-weight: bold;
+            text-align:center;
+        }
+        #rank-table{
+        border-collapse: collapse!important;
+        }
+
+        #rank-table th {
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+
+        }
+        #rank-table th td{
+        height:20px!important;
+        }
+        img{
+            width:80%;
+            height:50%;
+            margin-left: auto;
+	margin-right: auto;
+	display: block;
+        }
+        .left-content-1{
+             font-size: 20px;
+             padding-left:10px;
+        }
+
+    </style>
+</head>
+<body>
+<nav>
+        <div class="nav-wrapper">
+          <div class="row">
+              <div class="col s3">
+                   <a href="{% url 'feed:index' %}" class="brand-logo">Save4thPillar</a>
+              </div>
+              <div class="col s1">
+
+              </div>
+              <div class="col s8">
+                  <ul id="nav-mobile" class="left hide-on-med-and-down">
+                        <li><a href="{% url 'feed:index' %}">Home</a></li>
+
+                        <li><a href="{% url 'feed:stats' %}">Stats</a></li>
+                        <li><a href="collapsible.html">Content</a></li>
+                  </ul>
+              </div>
+
+          </div>
+        </div>
+    </nav>
+<br>

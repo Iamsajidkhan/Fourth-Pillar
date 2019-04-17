@@ -1,0 +1,48 @@
+{% extends "feed/base.html" %}
+{% block title %} Login to Vote{% endblock %}
+{% block content %}
+<br><br><br><br><br><br><br><br>
+<div class="row">
+    <div class="col l4">
+
+    </div>
+    <div class="col l4">
+
+
+        <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+              {% if form.errors %}
+                <p>{{ form.errors }}</p>
+              {% endif %}
+        {% include 'registration/form_login_template.html'%}<br>
+                <div class="row">
+                    <div class="col l5"></div>
+                    <div class="col-md-5">
+                            <button type="submit" class="login-btn btn btn-success">Login</button>
+
+                    </div><br><br>
+
+
+                </div>
+            <br><br>
+
+            <br><br>
+            <div class="row"><div class="col-md-12"><a href="#" class="pull-right">>>Reset Password</a></div></div>
+
+        </form>
+            <br><br>
+        </div>
+
+
+
+
+    </div>
+    <div class="col-md-4">
+
+    </div>
+
+</div>
+<br>
+<br><br><br><br><br>
+
+{% endblock %}

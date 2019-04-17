@@ -1,0 +1,35 @@
+{% extends 'feed/base.html'%}
+{% block content %}
+{% if user.is_authenticated %}
+<p>You are logged in</p>
+{% else %}
+<div class="container">
+<div class="row">
+  <div class="col l3">
+  </div>
+    <div class="col l5">
+        <div class="card">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                  {% if form.errors %}
+                    <p>{{ form.errors }}</p>
+                  {% endif %}
+                {% include 'feed/form_template.html'%}
+                <br>
+                     <div class="row">
+                         <div class="col l3"></div>
+                         <div class="col l6"><button type="submit" class="login-btn btn btn-success" style="align:center;">Create Account</button></div>
+                         <div class="col l3"></div>
+                    </div>
+                <br>
+            </form>
+        </div>
+    </div>
+  <div class="col l3">
+  </div>
+</div>
+</div>
+  <br>
+            <br>
+{% endif %}
+ {% endblock %}
